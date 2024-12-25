@@ -14,16 +14,7 @@ type ValuteType = {
 	Value: number;
 };
 
-type FetchData = {
-	Date: Date;
-	PreviousDate: Date;
-	PreviousURL: string;
-	Timestamp: Date;
-	Valute: ValuteType;
-};
-
 function App() {
-	const [data, setData] = useState<FetchData | null>(null);
 	const [date, setDate] = useState<Date>(new Date());
 	const [valute, setValute] = useState<ValuteType[]>([]);
 	const [search, setSearch] = useState<string>("");
@@ -34,7 +25,6 @@ function App() {
 			const { data } = await axios.get(
 				"https://www.cbr-xml-daily.ru/daily_json.js"
 			);
-			setData(data);
 			// setFilteredArray(data);
 			setDate(new Date(data.Date));
 
